@@ -21,8 +21,8 @@
  *  0  => true
  *  -5 => false
  */
-function isPositive(/* number */) {
-  throw new Error('Not implemented');
+function isPositive(number) {
+  return number >= 0;
 }
 
 /**
@@ -38,8 +38,16 @@ function isPositive(/* number */) {
  *  -5, 0, 5      => 5
  *  -0.1, 0, 0.2  => 0.2
  */
-function getMaxNumber(/* a, b, c */) {
-  throw new Error('Not implemented');
+function getMaxNumber(a, b, c) {
+  let answer = a;
+  if (a > b && a > c) {
+    answer = a;
+  } else if (b > a && b > c) {
+    answer = b;
+  } else if (c > a && c > b) {
+    answer = c;
+  }
+  return answer;
 }
 
 /**
@@ -82,8 +90,24 @@ function canQueenCaptureKing(/* queen, king */) {
  *  2, 2, 5   => false
  *  3, 0, 3   => false
  */
-function isIsoscelesTriangle(/* a, b, c */) {
-  throw new Error('Not implemented');
+function isIsoscelesTriangle(a, b, c) {
+  let answer = false;
+  if (a <= 0 || b <= 0 || c <= 0) {
+    answer = false;
+  } else if (a === b) {
+    if (a + b > c) {
+      answer = true;
+    }
+  } else if (a === c) {
+    if (a + c > b) {
+      answer = true;
+    }
+  } else if (b === c) {
+    if (b + c > a) {
+      answer = true;
+    }
+  }
+  return answer;
 }
 
 /**
@@ -100,8 +124,38 @@ function isIsoscelesTriangle(/* a, b, c */) {
  *  10  => X
  *  26  => XXVI
  */
-function convertToRomanNumerals(/* num */) {
-  throw new Error('Not implemented');
+function convertToRomanNumerals(num) {
+  const arrOfNumb = [
+    '',
+    'I',
+    'II',
+    'III',
+    'IV',
+    'V',
+    'VI',
+    'VII',
+    'VIII',
+    'IX',
+    'X',
+  ];
+  let answer = '';
+  if (num < 10) {
+    answer = arrOfNumb[num];
+  } else {
+    let secondDigit = num % 10;
+    let firstDigit = (num - secondDigit) / 10;
+    let a = '';
+    if (firstDigit <= 0) {
+      firstDigit = '';
+    } else {
+      for (let i = 1; i <= firstDigit; i += 1) {
+        a += arrOfNumb[10];
+      }
+    }
+    secondDigit = arrOfNumb[secondDigit];
+    answer = a + secondDigit;
+  }
+  return answer;
 }
 
 /**
